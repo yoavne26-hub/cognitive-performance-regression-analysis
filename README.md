@@ -101,37 +101,6 @@ Higher values indicate better cognitive performance.
 
 ---
 
-# Project Structure
-
-```text
-project
-├── data
-│   └── sample_data.xlsx
-├── scripts
-│   ├── R_part1.R
-│   └── R_part2.R
-├── reports
-│   ├── project_part1.docx
-│   └── project_part2.docx
-├── screenshots
-│   ├── part1
-│   │   ├── histogram_screen.jpg
-│   │   ├── cdf_screen.jpg
-│   │   ├── reaction_vs_sleep.jpg
-│   │   ├── reaction_vs_caffeine.jpg
-│   │   ├── screen_vs_sleep_by_stress.jpg
-│   │   ├── cognitive_across_sleep.jpg
-│   │   └── cognitive_vs_screen_by_color.jpg
-│   └── part2
-│       ├── final_model.jpg
-│       ├── interaction_memory_vs_stress.jpg
-│       ├── res_vs_fitted.jpg
-│       ├── qq_plot.jpg
-│       └── box_cox.jpg
-└── README.md
-
----
-
 # Part 1 — Exploratory Data Analysis
 
 The first stage focuses on understanding the structure and behavior of the dataset through descriptive statistics and visual analysis.
@@ -253,7 +222,38 @@ Therefore no transformation of **Cognitive_Score** was required.
 Group Project — Linear Regression Models
 
 - Yoav Nesher  
-- Roi Laniado  
+- Roi Laniado
+
+  ---
+
+# Project Structure
+
+```text
+project
+├── data
+│   └── sample_data.xlsx
+├── scripts
+│   ├── R_part1.R
+│   └── R_part2.R
+├── reports
+│   ├── project_part1.docx
+│   └── project_part2.docx
+├── screenshots
+│   ├── part1
+│   │   ├── histogram_screen.jpg
+│   │   ├── cdf_screen.jpg
+│   │   ├── reaction_vs_sleep.jpg
+│   │   ├── reaction_vs_caffeine.jpg
+│   │   ├── screen_vs_sleep_by_stress.jpg
+│   │   ├── cognitive_across_sleep.jpg
+│   │   └── cognitive_vs_screen_by_color.jpg
+│   └── part2
+│       ├── final_model.jpg
+│       ├── interaction_memory_vs_stress.jpg
+│       ├── res_vs_fitted.jpg
+│       ├── qq_plot.jpg
+│       └── box_cox.jpg
+└── README.md
 
 ---
 

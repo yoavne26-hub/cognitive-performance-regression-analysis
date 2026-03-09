@@ -14,6 +14,66 @@ The project was conducted as part of a course in **Linear Regression Models** an
 
 The goal of the project is to explain the variability in **Cognitive_Score**, which represents the overall cognitive performance of each participant.
 
+
+---
+
+# Key Findings
+
+A multivariate linear regression analysis was conducted to explain and predict **Cognitive_Score** using behavioral and physiological variables.
+
+The analysis was implemented entirely in **R**, following the statistical methodology taught in the course, without modifying the original dataset.
+
+During the preprocessing stage, univariate relationships between the dependent variable and candidate predictors were examined.  
+Pearson correlation tests were used for continuous variables and one-way ANOVA tests for categorical variables.
+
+Based on these results:
+
+- **Age** was removed due to negligible linear correlation with Cognitive_Score.
+- **Gender** was removed because category aggregation did not improve the model.
+
+For the categorical variable **Diet_Type**, categories *Vegetarian* and *Vegan* were merged into a new category **PlantBased**, creating a dummy variable **Diet_2** with *Non-Vegetarian* as the reference group.
+
+Several theoretically motivated interaction terms were evaluated.  
+Among them, the interaction **Memory_Test_Score × Stress_Level** was found to be statistically significant and improved model fit. Other interactions such as:
+
+- Daily_Screen_Time × Stress_Level  
+- Daily_Screen_Time × Diet_2  
+
+were not significant and therefore excluded.
+
+Variable selection was performed using both **Forward Selection** and **Backward Elimination** according to the **AIC criterion**.  
+Both procedures converged to the same model, reinforcing the stability of the selected specification.
+
+The final model includes the variables:
+
+- Sleep_Duration  
+- Stress_Level  
+- Daily_Screen_Time  
+- Exercise_Frequency  
+- Reaction_Time  
+- Memory_Test_Score  
+- Diet_2  
+- Caffeine_Intake  
+
+as well as the interaction:
+
+- **Memory_Test_Score × Stress_Level**
+
+Further model improvement analysis revealed evidence of **non-linearity for Caffeine_Intake**, and therefore a **second-degree polynomial term** was introduced.
+
+Model assumptions were evaluated using:
+
+- Residual vs Fitted plots
+- Q-Q plots
+- Shapiro-Wilk test
+- Kolmogorov-Smirnov test
+- Chow test for structural stability
+
+Although the residual normality tests indicated deviations, these were interpreted in light of the large sample size, where even small deviations may lead to significant results.
+
+A **Box-Cox transformation analysis** was performed for the dependent variable.  
+The estimated parameter λ was very close to 1, indicating that no transformation of **Cognitive_Score** was necessary.
+
 ---
 
 # Dataset Description
@@ -44,8 +104,6 @@ Higher values indicate better cognitive performance.
 | Caffeine_Intake | Daily caffeine intake (mg) |
 | Reaction_Time | Reaction time measurement |
 | Memory_Test_Score | Memory performance test score |
-
-The objective is to determine which of these variables contribute significantly to explaining cognitive performance.
 
 ---
 
@@ -89,155 +147,107 @@ project
 
 # Part 1 — Exploratory Data Analysis
 
-The first stage of the project focuses on understanding the structure and behavior of the dataset through descriptive statistics and visual analysis.
+The first stage focuses on understanding the structure and behavior of the dataset through descriptive statistics and visual analysis.
 
-Several statistical measures were calculated for the continuous variables, including:
+Key descriptive measures were computed, including:
 
-- Mean  
-- Median  
-- Standard deviation  
-- Interquartile range  
-- Skewness  
+- Mean
+- Median
+- Standard deviation
+- Interquartile range
+- Skewness
 
-These measures help characterize the distribution of the variables and identify potential irregularities in the data.
+These statistics help characterize the distribution of variables and identify potential irregularities.
 
 ---
 
 ## Distribution of Screen Time
 
-![Screen Time Histogram](screenshots/part1/histogram_screen.jpg)
-
-The histogram shows the distribution of daily screen time across participants.
-
-Screen time values are spread across the entire observed range, indicating large variation in digital device usage among individuals.
+<img src="screenshots/part1/histogram_screen.jpg" width="650">
 
 ---
 
 ## Cumulative Distribution of Screen Time
 
-![Screen Time CDF](screenshots/part1/cdf_screen.jpg)
-
-The cumulative distribution function illustrates how observations accumulate across the screen time range.  
-The gradual increase suggests that screen time values are distributed relatively evenly throughout the interval.
+<img src="screenshots/part1/cdf_screen.jpg" width="650">
 
 ---
 
 ## Sleep Duration and Reaction Time
 
-![Sleep Reaction](screenshots/part1/reaction_vs_sleep.jpg)
-
-This figure illustrates the relationship between sleep duration and reaction time.
-
-A mild negative relationship can be observed, suggesting that individuals who sleep longer tend to exhibit slightly faster reaction times.
+<img src="screenshots/part1/reaction_vs_sleep.jpg" width="650">
 
 ---
 
 ## Reaction Time and Caffeine Intake
 
-![Caffeine Reaction](screenshots/part1/reaction_vs_caffeine.jpg)
-
-The relationship between caffeine intake and reaction time appears weak and inconsistent.
+<img src="screenshots/part1/reaction_vs_caffeine.jpg" width="650">
 
 ---
 
 ## Behavioral Patterns: Sleep, Screen Time and Stress
 
-![Sleep Screen Stress](screenshots/part1/screen_vs_sleep_by_stress.jpg)
-
-This visualization explores the relationship between sleep duration and daily screen time across different stress levels.
-
-Participants with higher stress levels appear more frequently in regions associated with higher screen time and slightly lower sleep duration.
+<img src="screenshots/part1/screen_vs_sleep_by_stress.jpg" width="650">
 
 ---
 
 ## Cognitive Performance by Sleep Duration
 
-![Cognitive Sleep](screenshots/part1/cognitive_across_sleep.jpg)
-
-The violin plot compares cognitive score distributions across sleep duration groups.
-
-Participants with moderate sleep durations show slightly higher median cognitive scores.
+<img src="screenshots/part1/cognitive_across_sleep.jpg" width="650">
 
 ---
 
 ## Screen Time and Cognitive Score
 
-![Screen Cognitive](screenshots/part1/cognitive_vs_screen_by_color.jpg)
-
-The two-dimensional density contour plot presents the joint distribution of daily screen time and cognitive performance.
+<img src="screenshots/part1/cognitive_vs_screen_by_color.jpg" width="650">
 
 ---
 
 # Part 2 — Regression Modeling
 
-The second stage of the project focuses on constructing a multivariate linear regression model to explain the variation in cognitive performance.
+The second stage focuses on constructing a multivariate linear regression model to explain the variation in **Cognitive_Score**.
 
-Variable screening was conducted using **Pearson correlation tests** for continuous variables and **ANOVA tests** for categorical variables.
-
-For example, Age showed almost no correlation with Cognitive_Score and was therefore excluded from the final model. :contentReference[oaicite:0]{index=0}
+Variable selection and model construction followed a structured statistical procedure including correlation analysis, ANOVA tests, and automated model selection using the **AIC criterion**.
 
 ---
 
 ## Final Regression Model
 
-![Regression Model](screenshots/part2/final_model.jpg)
-
-The final model includes the following predictors:
-
-- Sleep duration  
-- Stress level  
-- Daily screen time  
-- Exercise frequency  
-- Reaction time  
-- Memory test score  
-- Diet type  
-- Caffeine intake (including a quadratic term)
-
-An interaction term between **Memory_Test_Score and Stress_Level** was also included in the model.
+<img src="screenshots/part2/final_model.jpg" width="650">
 
 ---
 
 ## Interaction Effect: Memory Score × Stress Level
 
-![Memory Stress Interaction](screenshots/part2/interaction_memory_vs_stress.jpg)
-
-The interaction analysis shows that the relationship between memory performance and cognitive score varies across stress levels.
+<img src="screenshots/part2/interaction_memory_vs_stress.jpg" width="650">
 
 ---
 
 # Model Diagnostics
 
-Several diagnostic tools were used to evaluate the assumptions of the regression model.
+## Residuals vs Fitted
 
----
-
-## Residuals vs Fitted Values
-
-![Residuals vs Fitted](screenshots/part2/res_vs_fitted.jpg)
-
-Residuals appear centered around zero, suggesting the model captures most of the systematic variation in the data.
+<img src="screenshots/part2/res_vs_fitted.jpg" width="650">
 
 ---
 
 ## Q-Q Plot of Residuals
 
-![QQ Plot](screenshots/part2/qq_plot.jpg)
-
-The Q-Q plot compares standardized residuals with the theoretical normal distribution.
+<img src="screenshots/part2/qq_plot.jpg" width="650">
 
 ---
 
 # Model Improvement
 
-A **Box-Cox transformation analysis** was performed to determine whether transforming the dependent variable would improve model fit.
+A Box-Cox transformation analysis was conducted in order to determine whether transforming the dependent variable could improve the regression model.
 
-![Box Cox](screenshots/part2/box_cox.jpg)
+<img src="screenshots/part2/box_cox.jpg" width="650">
 
-The estimated transformation parameter was:
+The estimated parameter:
 
 λ ≈ 1
 
-This indicates that no transformation of the dependent variable was required.
+Therefore no transformation of **Cognitive_Score** was required.
 
 ---
 
@@ -256,7 +266,7 @@ This indicates that no transformation of the dependent variable was required.
 Group Project — Linear Regression Models
 
 - Yoav Nesher  
-- Roi Laniado
+- Roi Laniado  
 
 ---
 

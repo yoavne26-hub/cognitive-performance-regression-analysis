@@ -1,6 +1,5 @@
 # Cognitive Performance Analysis Using Linear Regression
 
----
 
 ## Overview
 
@@ -68,20 +67,20 @@ project
 │
 ├── screenshots
 │ ├── part1
-│ │ ├── histogram_screen.jpeg
-│ │ ├── cdf_screen.jpeg
-│ │ ├── reaction_vs_sleep.jpeg
-│ │ ├── reaction_vs_caffeine.jpeg
-│ │ ├── screen_vs_sleep_by_stress.jpeg
-│ │ ├── cognitive_across_sleep.jpeg
-│ │ └── cognitive_vs_screen_by_color.jpeg
+│ │ ├── histogram_screen.jpg
+│ │ ├── cdf_screen.jpg
+│ │ ├── reaction_vs_sleep.jpg
+│ │ ├── reaction_vs_caffeine.jpg
+│ │ ├── screen_vs_sleep_by_stress.jpg
+│ │ ├── cognitive_across_sleep.jpg
+│ │ └── cognitive_vs_screen_by_color.jpg
 │ │
 │ └── part2
-│ ├── final_model.jpeg
-│ ├── interaction_memory_vs_stress.jpeg
-│ ├── res_vs_fitted.jpeg
-│ ├── qq_plot.jpeg
-│ └── box_cox.jpeg
+│ ├── final_model.jpg
+│ ├── interaction_memory_vs_stress.jpg
+│ ├── res_vs_fitted.jpg
+│ ├── qq_plot.jpg
+│ └── box_cox.jpg
 │
 └── README.md
 
@@ -106,7 +105,7 @@ These measures help characterize the distribution of the variables and identify 
 
 ## Distribution of Screen Time
 
-![Screen Time Histogram](screenshots/part1/histogram_screen.jpeg)
+![Screen Time Histogram](screenshots/part1/histogram_screen.jpg)
 
 The histogram shows the distribution of daily screen time across participants.
 
@@ -116,7 +115,7 @@ Screen time values are spread across the entire observed range, indicating large
 
 ## Cumulative Distribution of Screen Time
 
-![Screen Time CDF](screenshots/part1/cdf_screen.jpeg)
+![Screen Time CDF](screenshots/part1/cdf_screen.jpg)
 
 The cumulative distribution function illustrates how observations accumulate across the screen time range.  
 The gradual increase suggests that screen time values are distributed relatively evenly throughout the interval.
@@ -125,7 +124,7 @@ The gradual increase suggests that screen time values are distributed relatively
 
 ## Sleep Duration and Reaction Time
 
-![Sleep Reaction](screenshots/part1/reaction_vs_sleep.jpeg)
+![Sleep Reaction](screenshots/part1/reaction_vs_sleep.jpg)
 
 This figure illustrates the relationship between sleep duration and reaction time.
 
@@ -135,7 +134,7 @@ A mild negative relationship can be observed, suggesting that individuals who sl
 
 ## Reaction Time and Caffeine Intake
 
-![Caffeine Reaction](screenshots/part1/reaction_vs_caffeine.jpeg)
+![Caffeine Reaction](screenshots/part1/reaction_vs_caffeine.jpg)
 
 The relationship between caffeine intake and reaction time appears weak and inconsistent.
 
@@ -143,7 +142,7 @@ The relationship between caffeine intake and reaction time appears weak and inco
 
 ## Behavioral Patterns: Sleep, Screen Time and Stress
 
-![Sleep Screen Stress](screenshots/part1/screen_vs_sleep_by_stress.jpeg)
+![Sleep Screen Stress](screenshots/part1/screen_vs_sleep_by_stress.jpg)
 
 This visualization explores the relationship between sleep duration and daily screen time across different stress levels.
 
@@ -153,7 +152,7 @@ Participants with higher stress levels appear more frequently in regions associa
 
 ## Cognitive Performance by Sleep Duration
 
-![Cognitive Sleep](screenshots/part1/cognitive_across_sleep.jpeg)
+![Cognitive Sleep](screenshots/part1/cognitive_across_sleep.jpg)
 
 The violin plot compares cognitive score distributions across sleep duration groups.
 
@@ -163,7 +162,7 @@ Participants with moderate sleep durations show slightly higher median cognitive
 
 ## Screen Time and Cognitive Score
 
-![Screen Cognitive](screenshots/part1/cognitive_vs_screen_by_color.jpeg)
+![Screen Cognitive](screenshots/part1/cognitive_vs_screen_by_color.jpg)
 
 The two-dimensional density contour plot presents the joint distribution of daily screen time and cognitive performance.
 
@@ -181,7 +180,7 @@ For example, Age showed almost no correlation with Cognitive_Score and was there
 
 ## Final Regression Model
 
-![Regression Model](screenshots/part2/final_model.jpeg)
+![Regression Model](screenshots/part2/final_model.jpg)
 
 The final model includes the following predictors:
 
@@ -200,7 +199,7 @@ An interaction term between **Memory_Test_Score and Stress_Level** was also incl
 
 ## Interaction Effect: Memory Score × Stress Level
 
-![Memory Stress Interaction](screenshots/part2/interaction_memory_vs_stress.jpeg)
+![Memory Stress Interaction](screenshots/part2/interaction_memory_vs_stress.jpg)
 
 The interaction analysis shows that the relationship between memory performance and cognitive score varies across stress levels.
 
@@ -214,7 +213,7 @@ Several diagnostic tools were used to evaluate the assumptions of the regression
 
 ## Residuals vs Fitted Values
 
-![Residuals vs Fitted](screenshots/part2/res_vs_fitted.jpeg)
+![Residuals vs Fitted](screenshots/part2/res_vs_fitted.jpg)
 
 Residuals appear centered around zero, suggesting the model captures most of the systematic variation in the data.
 
@@ -222,7 +221,7 @@ Residuals appear centered around zero, suggesting the model captures most of the
 
 ## Q-Q Plot of Residuals
 
-![QQ Plot](screenshots/part2/qq_plot.jpeg)
+![QQ Plot](screenshots/part2/qq_plot.jpg)
 
 The Q-Q plot compares standardized residuals with the theoretical normal distribution.
 
@@ -232,7 +231,7 @@ The Q-Q plot compares standardized residuals with the theoretical normal distrib
 
 A **Box-Cox transformation analysis** was performed to determine whether transforming the dependent variable would improve model fit.
 
-![Box Cox](screenshots/part2/box_cox.jpeg)
+![Box Cox](screenshots/part2/box_cox.jpg)
 
 The estimated transformation parameter was:
 

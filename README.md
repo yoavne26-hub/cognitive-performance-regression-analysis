@@ -212,8 +212,13 @@ The differing slopes indicate that stress moderates the influence of memory abil
 
 <img src="screenshots/part2/res_vs_fitted.jpg" width="560">
 
-This diagnostic plot evaluates whether residuals are randomly distributed around zero.  
-The overall pattern suggests the model captures most systematic variation in the data.
+This diagnostic plot examines whether residuals are randomly distributed around zero, which is expected when the linear model captures most systematic variation in the data.
+
+A noticeable pattern of large residuals appears at the extremes of the fitted values. This occurs because the dependent variable **Cognitive_Score** is naturally bounded between **0 and 100**, while a linear regression model produces **unbounded predictions**.  
+
+When combinations of explanatory variables lead the model to predict values outside this range (below 0 or above 100), the predicted value is far from the observed score, resulting in larger residuals.
+
+This phenomenon reflects a structural limitation of linear regression when modeling bounded outcomes rather than a failure of the model specification.
 
 ---
 
@@ -221,8 +226,11 @@ The overall pattern suggests the model captures most systematic variation in the
 
 <img src="screenshots/part2/qq_plot.jpg" width="560">
 
-The Q-Q plot compares standardized residuals to a theoretical normal distribution.  
-Some deviations from the diagonal line indicate departures from perfect normality.
+The Q-Q plot compares standardized residuals with a theoretical normal distribution.  
+While many residuals follow the expected linear pattern, deviations are visible in the tails.
+
+These deviations are partially explained by the bounded nature of **Cognitive_Score**.  
+Because the model may occasionally produce predictions outside the feasible range, the resulting large residuals contribute to heavier tails in the residual distribution.
 
 ---
 

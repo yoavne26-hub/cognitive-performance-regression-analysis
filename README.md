@@ -1,5 +1,7 @@
 # Cognitive Performance Analysis Using Linear Regression
 
+![Project Banner](screenshots/banner.jpeg)
+
 ## Overview
 
 This project analyzes factors that may influence cognitive performance using statistical methods and linear regression modeling in R.
@@ -51,7 +53,7 @@ The objective is to determine which of these variables contribute significantly 
 # Project Structure
 
 
-project/
+project
 │
 ├── data
 │ └── sample_data.xlsx
@@ -66,20 +68,20 @@ project/
 │
 ├── screenshots
 │ ├── part1
-│ │ ├── histogram_screen.png
-│ │ ├── cdf_screen.png
-│ │ ├── reaction_vs_sleep.png
-│ │ ├── reaction_vs_caffeine.png
-│ │ ├── screen_vs_sleep_by_stress.png
-│ │ ├── cognitive_across_sleep.png
-│ │ └── cognitive_vs_screen_by_color.png
+│ │ ├── histogram_screen.jpeg
+│ │ ├── cdf_screen.jpeg
+│ │ ├── reaction_vs_sleep.jpeg
+│ │ ├── reaction_vs_caffeine.jpeg
+│ │ ├── screen_vs_sleep_by_stress.jpeg
+│ │ ├── cognitive_across_sleep.jpeg
+│ │ └── cognitive_vs_screen_by_color.jpeg
 │ │
 │ └── part2
-│ ├── final_model.png
-│ ├── interaction_memory_vs_stress.png
-│ ├── res_vs_fitted.png
-│ ├── qq_plot.png
-│ └── box_cox.png
+│ ├── final_model.jpeg
+│ ├── interaction_memory_vs_stress.jpeg
+│ ├── res_vs_fitted.jpeg
+│ ├── qq_plot.jpeg
+│ └── box_cox.jpeg
 │
 └── README.md
 
@@ -92,131 +94,115 @@ The first stage of the project focuses on understanding the structure and behavi
 
 Several statistical measures were calculated for the continuous variables, including:
 
-- Mean
-- Median
-- Standard deviation
-- Interquartile range
-- Skewness
+- Mean  
+- Median  
+- Standard deviation  
+- Interquartile range  
+- Skewness  
 
-These measures help characterize the distribution of the variables and identify potential irregularities in the data. :contentReference[oaicite:1]{index=1}
+These measures help characterize the distribution of the variables and identify potential irregularities in the data.
 
 ---
 
 ## Distribution of Screen Time
 
-The following histogram illustrates the distribution of daily screen time among participants.
+![Screen Time Histogram](screenshots/part1/histogram_screen.jpeg)
 
-![Screen Time Histogram](screenshots/part1/histogram_screen.png)
+The histogram shows the distribution of daily screen time across participants.
 
-The distribution appears relatively uniform across the observed range, indicating that screen usage varies considerably among individuals.
+Screen time values are spread across the entire observed range, indicating large variation in digital device usage among individuals.
 
 ---
 
 ## Cumulative Distribution of Screen Time
 
-![Screen Time CDF](screenshots/part1/cdf_screen.png)
+![Screen Time CDF](screenshots/part1/cdf_screen.jpeg)
 
-The cumulative distribution shows a steady increase across the range of values, suggesting that observations are distributed relatively evenly throughout the interval.
+The cumulative distribution function illustrates how observations accumulate across the screen time range.  
+The gradual increase suggests that screen time values are distributed relatively evenly throughout the interval.
 
 ---
 
 ## Sleep Duration and Reaction Time
 
-![Sleep Reaction](screenshots/part1/reaction_vs_sleep.png)
+![Sleep Reaction](screenshots/part1/reaction_vs_sleep.jpeg)
 
 This figure illustrates the relationship between sleep duration and reaction time.
 
-A moderate negative trend can be observed, indicating that individuals who sleep longer tend to have slightly faster reaction times.
-
-This relationship is consistent with the expectation that sufficient sleep improves alertness and cognitive processing.
+A mild negative relationship can be observed, suggesting that individuals who sleep longer tend to exhibit slightly faster reaction times.
 
 ---
 
 ## Reaction Time and Caffeine Intake
 
-![Caffeine Reaction](screenshots/part1/reaction_vs_caffeine.png)
+![Caffeine Reaction](screenshots/part1/reaction_vs_caffeine.jpeg)
 
-The relationship between caffeine consumption and reaction time shows a weak and inconsistent pattern.
-
-Although moderate caffeine intake may improve alertness, higher consumption does not necessarily result in better reaction performance.
+The relationship between caffeine intake and reaction time appears weak and inconsistent.
 
 ---
 
 ## Behavioral Patterns: Sleep, Screen Time and Stress
 
-![Sleep Screen Stress](screenshots/part1/screen_vs_sleep_by_stress.png)
+![Sleep Screen Stress](screenshots/part1/screen_vs_sleep_by_stress.jpeg)
 
-This visualization examines the relationship between sleep duration and screen time while distinguishing between different stress levels.
+This visualization explores the relationship between sleep duration and daily screen time across different stress levels.
 
-Participants reporting higher stress levels tend to appear more frequently in regions associated with higher screen time and slightly reduced sleep duration.
+Participants with higher stress levels appear more frequently in regions associated with higher screen time and slightly lower sleep duration.
 
 ---
 
 ## Cognitive Performance by Sleep Duration
 
-![Cognitive Sleep](screenshots/part1/cognitive_across_sleep.png)
+![Cognitive Sleep](screenshots/part1/cognitive_across_sleep.jpeg)
 
-This violin plot illustrates the distribution of cognitive scores across different sleep duration groups.
+The violin plot compares cognitive score distributions across sleep duration groups.
 
-Participants with moderate sleep duration tend to have slightly higher median cognitive scores, although the distributions overlap considerably.
+Participants with moderate sleep durations show slightly higher median cognitive scores.
 
 ---
 
 ## Screen Time and Cognitive Score
 
-![Screen Cognitive](screenshots/part1/cognitive_vs_screen_by_color.png)
+![Screen Cognitive](screenshots/part1/cognitive_vs_screen_by_color.jpeg)
 
-The two-dimensional density plot shows the joint distribution of screen time and cognitive performance.
-
-The visualization suggests that there is no strong linear relationship between these variables, although extremely high screen time may be associated with slightly lower cognitive scores.
+The two-dimensional density contour plot presents the joint distribution of daily screen time and cognitive performance.
 
 ---
 
 # Part 2 — Regression Modeling
 
-The second stage of the project focuses on constructing a multivariate linear regression model in order to explain the variation in cognitive performance.
+The second stage of the project focuses on constructing a multivariate linear regression model to explain the variation in cognitive performance.
 
----
+Variable screening was conducted using **Pearson correlation tests** for continuous variables and **ANOVA tests** for categorical variables.
 
-## Variable Screening
-
-Two statistical approaches were used to evaluate potential predictors:
-
-- Pearson correlation tests for continuous variables
-- ANOVA tests for categorical variables
-
-Variables that showed very weak relationships with the dependent variable were removed from the model.
-
-For example, **Age** showed almost no correlation with cognitive score and was excluded from further analysis.
+For example, Age showed almost no correlation with Cognitive_Score and was therefore excluded from the final model. :contentReference[oaicite:0]{index=0}
 
 ---
 
 ## Final Regression Model
 
-![Regression Model](screenshots/part2/final_model.png)
+![Regression Model](screenshots/part2/final_model.jpeg)
 
-The final regression model includes the following predictors:
+The final model includes the following predictors:
 
-- Sleep duration
-- Stress level
-- Daily screen time
-- Exercise frequency
-- Reaction time
-- Memory test score
-- Caffeine intake
-- Diet type
+- Sleep duration  
+- Stress level  
+- Daily screen time  
+- Exercise frequency  
+- Reaction time  
+- Memory test score  
+- Diet type  
+- Caffeine intake (including a quadratic term)
 
-Additionally, a significant interaction effect was identified between memory test score and stress level.
+An interaction term between **Memory_Test_Score and Stress_Level** was also included in the model.
 
 ---
 
 ## Interaction Effect: Memory Score × Stress Level
 
-![Memory Stress Interaction](screenshots/part2/interaction_memory_vs_stress.png)
+![Memory Stress Interaction](screenshots/part2/interaction_memory_vs_stress.jpeg)
 
-The interaction plot demonstrates that the relationship between memory performance and cognitive score varies across stress levels.
-
-Participants with lower stress levels tend to show stronger positive relationships between memory score and overall cognitive performance.
+The interaction analysis shows that the relationship between memory performance and cognitive score varies across stress levels.
 
 ---
 
@@ -228,57 +214,53 @@ Several diagnostic tools were used to evaluate the assumptions of the regression
 
 ## Residuals vs Fitted Values
 
-![Residuals vs Fitted](screenshots/part2/res_vs_fitted.png)
+![Residuals vs Fitted](screenshots/part2/res_vs_fitted.jpeg)
 
-The residual plot was used to assess linearity and homoscedasticity.
-
-The distribution of residuals suggests that the model captures most of the systematic variation in the data.
+Residuals appear centered around zero, suggesting the model captures most of the systematic variation in the data.
 
 ---
 
 ## Q-Q Plot of Residuals
 
-![QQ Plot](screenshots/part2/qq_plot.png)
+![QQ Plot](screenshots/part2/qq_plot.jpeg)
 
-The Q-Q plot compares the distribution of standardized residuals with the theoretical normal distribution.
-
-Some deviations from normality are observed, which is common in large datasets.
+The Q-Q plot compares standardized residuals with the theoretical normal distribution.
 
 ---
 
 # Model Improvement
 
-To examine whether a transformation of the dependent variable could improve the model, a **Box-Cox transformation analysis** was performed.
+A **Box-Cox transformation analysis** was performed to determine whether transforming the dependent variable would improve model fit.
 
-![Box Cox](screenshots/part2/box_cox.png)
+![Box Cox](screenshots/part2/box_cox.jpeg)
 
-The estimated transformation parameter was approximately:
+The estimated transformation parameter was:
 
 λ ≈ 1
 
-This indicates that the original scale of the dependent variable is already appropriate and that no transformation is required.
+This indicates that no transformation of the dependent variable was required.
 
 ---
 
 # Technologies Used
 
-- R
-- Linear regression modeling
-- Exploratory data analysis
-- Statistical diagnostics
-- Data visualization
+- R  
+- Linear Regression Modeling  
+- Exploratory Data Analysis  
+- Statistical Diagnostics  
+- Data Visualization  
 
 ---
 
 # Authors
 
-Group Project – Linear Regression Models
+Group Project — Linear Regression Models
 
 - Yoav Nesher  
-- Project team members
+- Project Team Members
 
 ---
 
 # Notes
 
-This project was developed for academic purposes as part of coursework in statistical modeling and regression analysis.
+This project was developed as part of coursework in statistical modeling and regression analysis.

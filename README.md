@@ -224,7 +224,13 @@ Group Project — Linear Regression Models
 - Yoav Nesher  
 - Roi Laniado
 
-  ---
+---
+
+# Notes
+
+This project was developed as part of coursework in statistical modeling and regression analysis.
+
+---
 
 # Project Structure
 
@@ -255,8 +261,3 @@ project
 │       └── box_cox.jpg
 └── README.md
 
----
-
-# Notes
-
-This project was developed as part of coursework in statistical modeling and regression analysis.

@@ -1,6 +1,9 @@
 # Cognitive Performance Analysis Using Linear Regression
 
-![Project Banner](screenshots/banner.jpeg)
+Cognitive Performance Analysis
+Linear Regression Modeling in R
+
+---
 
 ## Overview
 

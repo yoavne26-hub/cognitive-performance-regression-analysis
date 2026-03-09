@@ -121,11 +121,17 @@ These statistics help characterize the distribution of variables and identify po
 
 <img src="screenshots/part1/histogram_screen.jpg" width="560">
 
+The histogram presents the distribution of daily screen time across participants.  
+The spread of values indicates considerable variability in digital device usage between individuals.
+
 ---
 
 ## Cumulative Distribution of Screen Time
 
 <img src="screenshots/part1/cdf_screen.jpg" width="560">
+
+The cumulative distribution function illustrates how screen-time observations accumulate across the range of values.  
+The smooth increase suggests that screen time is relatively evenly distributed across participants.
 
 ---
 
@@ -133,11 +139,17 @@ These statistics help characterize the distribution of variables and identify po
 
 <img src="screenshots/part1/reaction_vs_sleep.jpg" width="560">
 
+This scatter plot explores the relationship between sleep duration and reaction time.  
+A mild negative trend can be observed, suggesting that longer sleep duration may be associated with slightly faster reaction times.
+
 ---
 
 ## Reaction Time and Caffeine Intake
 
 <img src="screenshots/part1/reaction_vs_caffeine.jpg" width="560">
+
+This plot examines the relationship between caffeine intake and reaction time.  
+The pattern appears relatively weak, indicating that caffeine intake alone may not strongly explain reaction time variability.
 
 ---
 
@@ -145,17 +157,26 @@ These statistics help characterize the distribution of variables and identify po
 
 <img src="screenshots/part1/screen_vs_sleep_by_stress.jpg" width="560">
 
+This visualization combines sleep duration and daily screen time while differentiating participants by stress level.  
+Higher stress levels appear more frequently in regions associated with higher screen time and slightly reduced sleep duration.
+
 ---
 
 ## Cognitive Performance by Sleep Duration
 
 <img src="screenshots/part1/cognitive_across_sleep.jpg" width="560">
 
+The violin plot compares the distribution of cognitive scores across sleep duration groups.  
+Participants with moderate sleep durations appear to have slightly higher median cognitive scores.
+
 ---
 
 ## Screen Time and Cognitive Score
 
 <img src="screenshots/part1/cognitive_vs_screen_by_color.jpg" width="560">
+
+This density visualization shows the joint distribution of screen time and cognitive performance.  
+While no strong linear relationship is visible, moderate screen time levels appear frequently in mid-range cognitive scores.
 
 ---
 
@@ -171,11 +192,17 @@ Variable selection and model construction followed a structured statistical proc
 
 <img src="screenshots/part2/final_model.jpg" width="560">
 
+This equation represents the final multivariate regression model selected for explaining cognitive performance.  
+It incorporates the significant behavioral variables and interaction effects identified during model selection.
+
 ---
 
 ## Interaction Effect: Memory Score × Stress Level
 
 <img src="screenshots/part2/interaction_memory_vs_stress.jpg" width="560">
+
+The figure illustrates how the relationship between memory test performance and cognitive score varies across stress levels.  
+The differing slopes indicate that stress moderates the influence of memory ability on overall cognitive performance.
 
 ---
 
@@ -185,11 +212,17 @@ Variable selection and model construction followed a structured statistical proc
 
 <img src="screenshots/part2/res_vs_fitted.jpg" width="560">
 
+This diagnostic plot evaluates whether residuals are randomly distributed around zero.  
+The overall pattern suggests the model captures most systematic variation in the data.
+
 ---
 
 ## Q-Q Plot of Residuals
 
 <img src="screenshots/part2/qq_plot.jpg" width="560">
+
+The Q-Q plot compares standardized residuals to a theoretical normal distribution.  
+Some deviations from the diagonal line indicate departures from perfect normality.
 
 ---
 
@@ -203,7 +236,7 @@ The estimated parameter:
 
 λ ≈ 1
 
-Therefore no transformation of **Cognitive_Score** was required.
+This indicates that the original scale of **Cognitive_Score** already provides an appropriate functional form for the regression model.
 
 ---
 
@@ -260,4 +293,3 @@ project
 │       ├── qq_plot.jpg
 │       └── box_cox.jpg
 └── README.md
-

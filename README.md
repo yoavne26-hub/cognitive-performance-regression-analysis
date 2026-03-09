@@ -257,7 +257,7 @@ This indicates that no transformation of the dependent variable was required.
 Group Project — Linear Regression Models
 
 - Yoav Nesher  
-- Project Team Members
+- Roi Laniado
 
 ---
 
